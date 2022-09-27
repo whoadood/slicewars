@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRestaurantListContext } from "./restaurantListContext";
 import { YelpResponse } from "../types/yelp";
 export default function UsePickem() {
-  const restaurantList = useRestaurantListContext();
+  const restaurantContext = useRestaurantListContext();
   const [restaurants, setRestaurants] =
     useState<
       [YelpResponse["businesses"][number], YelpResponse["businesses"][number]]
@@ -24,11 +24,11 @@ export default function UsePickem() {
         return random as YelpResponse["businesses"][number];
       }
     },
-    [restaurantList]
+    []
   );
 
   const rePickem = useCallback(() => {
-    const restaurants = restaurantList?.businesses;
+    const restaurants = restaurantContext?.restaurantList.businesses;
     if (restaurants) {
       const r1: YelpResponse["businesses"][number] | undefined =
         pickem(restaurants);
@@ -43,13 +43,13 @@ export default function UsePickem() {
         ]);
       }
     }
-  }, [restaurantList, pickem]);
+  }, [restaurantContext?.restaurantList, pickem]);
 
   useEffect(() => {
-    if (restaurantList?.businesses) {
+    if (restaurantContext?.restaurantList?.businesses) {
       rePickem();
     }
-  }, [restaurantList?.businesses, rePickem]);
+  }, [restaurantContext?.restaurantList?.businesses, rePickem]);
 
   return { restaurants, rePickem };
 }

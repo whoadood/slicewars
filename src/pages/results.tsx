@@ -4,21 +4,21 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRestaurantListContext } from "../hooks/restaurantListContext";
 
 export default function ResultsPage() {
-  const restaurantList = useRestaurantListContext();
+  const restaurantContext = useRestaurantListContext();
   const allVotes = trpc.useQuery(
     [
       "vote.getAllVotes",
       {
-        restaurants: restaurantList?.businesses.map(
+        restaurants: restaurantContext?.restaurantList?.businesses.map(
           (biz) => biz.id
         ) as string[],
       },
     ],
     {
-      enabled: !!restaurantList,
+      enabled: !!restaurantContext?.restaurantList,
     }
   );
-  const updatedRestaurants = restaurantList?.businesses
+  const updatedRestaurants = restaurantContext?.restaurantList?.businesses
     .map((business) => {
       return {
         ...business,

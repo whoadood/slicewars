@@ -7,26 +7,29 @@ import {
 import { trpc } from "../utils/trpc";
 import UsePickem from "../hooks/usePickem";
 import { YelpResponse } from "../types/yelp";
+import { useRestaurantListContext } from "../hooks/restaurantListContext";
 
 export default function Tester() {
+  const restaurantContext = useRestaurantListContext();
   const { restaurants, rePickem } = UsePickem();
   const voteAPI = trpc.useMutation("vote.createVote", {
-    onSuccess: (response) => {
-      console.log("server response", response);
+    onSuccess: () => {
       rePickem();
     },
   });
 
   return (
     <div className="flex items-center relative flex-col justify-center sm:translate-y-1/2">
-      <div className="flex fixed sm:top-1/2 sm:right-1/2 sm:translate-x-1/2 sm:translate-y-1/2 z-10 top-2 right-2 justify-center items-center">
-        <button
-          className="bg-red-800 p-2 rounded-full hover:outline hover:outline-white"
-          onClick={rePickem}
-        >
-          <ArrowPathIcon className="w-8" />
-        </button>
-      </div>
+      {restaurants && (
+        <div className="flex fixed sm:top-1/2 sm:right-1/2 sm:translate-x-1/2 sm:translate-y-1/2 z-10 top-2 right-2 justify-center items-center">
+          <button
+            className="bg-red-800 p-2 rounded-full hover:outline hover:outline-white"
+            onClick={rePickem}
+          >
+            <ArrowPathIcon className="w-8" />
+          </button>
+        </div>
+      )}
       <ul className="flex relative gap-4 flex-col sm:flex-row">
         {restaurants && (
           <div className="absolute flex flex-col top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-3/4 ">
@@ -35,7 +38,7 @@ export default function Tester() {
             </span>
           </div>
         )}
-        {restaurants &&
+        {restaurants && !restaurantContext?.restIsLoading ? (
           restaurants?.map((business) => (
             <li
               className="bg-slate-900 rounded p-2 flex justify-between flex-col shadow"
@@ -89,7 +92,19 @@ export default function Tester() {
                 </div>
               </div>
             </li>
-          ))}
+          ))
+        ) : !restaurants && restaurantContext?.restIsLoading ? (
+          <div className="flex justify-center items-center min-h-[20vh]">
+            <h2 className="text-2xl px-6">Loading local restaurants...</h2>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center min-h-[20vh]">
+            <h2 className="text-2xl px-6">
+              This application requires access to your device location in order
+              to properly work.
+            </h2>
+          </div>
+        )}
       </ul>
     </div>
   );
