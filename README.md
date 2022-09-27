@@ -1,3 +1,7 @@
+![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
+![slicewars-results-diagram](https://user-images.githubusercontent.com/82413454/192639724-8c04cfcc-6b67-46a6-ad11-6ceda3c2f335.png)
+
+
 # Create T3 App
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
