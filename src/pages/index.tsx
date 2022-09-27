@@ -73,6 +73,7 @@ export default function Tester() {
                 />
                 <div className="hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
                   <button
+                    disabled={voteAPI.isLoading}
                     onClick={() => {
                       const vote = {
                         votedFor: business.id,
@@ -82,7 +83,7 @@ export default function Tester() {
                           )[0] as YelpResponse["businesses"][number]
                         ).id,
                       };
-
+                      console.log("vote click", vote);
                       voteAPI.mutate(vote);
                     }}
                     className="bg-green-800 group-hover:opacity-100 opacity-100 sm:opacity-0 p-3 transition translate-y-8 hover:outline group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"
