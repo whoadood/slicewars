@@ -2,6 +2,7 @@ import React from "react";
 import { trpc } from "../utils/trpc";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRestaurantListContext } from "../hooks/restaurantListContext";
+import Image from "next/image";
 
 export default function ResultsPage() {
   const restaurantContext = useRestaurantListContext();
@@ -49,7 +50,13 @@ export default function ResultsPage() {
               key={business.id}
             >
               <div className="h-[100px] max-w-[125px] relative flex mr-2 overflow-hidden">
-                <img src={business.image_url} className="min-w-full h-auto" />
+                <Image
+                  src={business.image_url}
+                  alt={"business image"}
+                  height={100}
+                  width={125}
+                  className="min-w-full h-auto"
+                />
               </div>
               <div>
                 <h2>

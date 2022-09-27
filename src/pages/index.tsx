@@ -8,6 +8,7 @@ import { trpc } from "../utils/trpc";
 import UsePickem from "../hooks/usePickem";
 import { YelpResponse } from "../types/yelp";
 import { useRestaurantListContext } from "../hooks/restaurantListContext";
+import Image from "next/image";
 
 export default function Tester() {
   const restaurantContext = useRestaurantListContext();
@@ -67,9 +68,12 @@ export default function Tester() {
               </div>
 
               <div className="h-[300px] max-w-[350px] mt-4 relative flex overflow-hidden">
-                <img
+                <Image
                   src={business.image_url}
+                  alt={"business image"}
                   className="min-w-full z-0 h-auto"
+                  height={300}
+                  width={350}
                 />
                 <div className="hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
                   <button
