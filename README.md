@@ -24,8 +24,12 @@ View the voting results for local restaurants!
 <br />
 ![results-slicewars](https://user-images.githubusercontent.com/82413454/192822881-32d475ea-774e-42c0-b6e8-e42a93bdb2fe.png)
 <br />
-I cannot wrap my head around why if you make pizza and hot dogs, the choice to go with hot dog for main image was made.
-
+(I cannot wrap my head around why if you make pizza and hot dogs, the choice to go with hot dog for main image was made.)
+<br />
+<br />
+# Inspiration
+<iframe width="885" height="498" src="https://www.youtube.com/embed/PKy2lYEnhgs" title="Building a MODERN Full Stack App for FREE w/ NextJS 12, Typescript, Prisma and more - T3 Stack" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+The idea for this app came to me while researching new technologies, there is a lot of overlap with Roundest and I want to give credit where its due. 
 
 ![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
 ![slicewars-results-diagram](https://user-images.githubusercontent.com/82413454/192639724-8c04cfcc-6b67-46a6-ad11-6ceda3c2f335.png)
