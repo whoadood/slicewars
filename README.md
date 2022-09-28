@@ -10,10 +10,16 @@ Growing up in the early 90's, during the hay day of Teenage Mutant Ninja Turtles
 # About
 
 Slicewars is an application aimed at finding the closest pizza to the ninja turtles pizza. Utilizing the browsers geolocation API, a user receives two local pizza shops and can vote on which pizza more closely resembles the ninja turtles pizza and view the results of voting in their area.
+![Screenshot 2022-09-28 at 11-09-57 https __slicewars-dbad vercel app](https://user-images.githubusercontent.com/82413454/192818798-63c7624b-b165-45d0-8721-6291db0c3637.png)
 
 ## Vote
+![like-slicewars](https://user-images.githubusercontent.com/82413454/192821763-2546abae-56c4-401b-9e65-bd9dc30a9fc3.png)
+Click the thumbs up icon to cast your vote!
 
-![Screenshot 2022-09-28 at 11-09-57 https __slicewars-dbad vercel app](https://user-images.githubusercontent.com/82413454/192818798-63c7624b-b165-45d0-8721-6291db0c3637.png)
+![refresh-slicewars](https://user-images.githubusercontent.com/82413454/192821867-014be9e4-0eee-4f85-a92f-ea1b1a50a5fd.png)
+Never tried either restaurant? No worries just refresh the contendors!
+
+
 
 ![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
 ![slicewars-results-diagram](https://user-images.githubusercontent.com/82413454/192639724-8c04cfcc-6b67-46a6-ad11-6ceda3c2f335.png)
