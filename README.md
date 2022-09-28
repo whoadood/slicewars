@@ -18,7 +18,10 @@ Click the thumbs up icon to cast your vote!
 
 ![refresh-slicewars](https://user-images.githubusercontent.com/82413454/192821867-014be9e4-0eee-4f85-a92f-ea1b1a50a5fd.png)
 Never tried either restaurant? No worries just refresh the contendors!
-
+<br />
+## Results
+![results-slicewars](https://user-images.githubusercontent.com/82413454/192822881-32d475ea-774e-42c0-b6e8-e42a93bdb2fe.png)
+View the voting results for local restaurants!
 
 
 ![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
