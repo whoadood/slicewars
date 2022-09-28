@@ -1,9 +1,19 @@
 ![pizzatime](https://user-images.githubusercontent.com/82413454/192655528-6af22c8b-0303-4e1b-a18b-8db126ed0e45.jpeg)
 # Background
 
-Growing up in the early 90's, during the hay day of Teenage Mutant Ninja Turtles, turtle-power was unavoidable. Cartoons, movies, music, theatre... the heroes in a half shell were everywhere, and I loved every second of it. As any TMNT fan knows, if theres anything the ninja turtles were known for it was their love of pizza. I dont know if it was clever marketing, juvinile impressionism or some other mystical force but the pizza's in the cartoon were magical. Any time the show was on, I wanted pizza; when I thought of pizza, I pictured ninja turtles pizza. This, of course, lead to one problem: All of the pizza I could get in reality could not live up to the ninja turtles pizza, afterall a cartoon pizza is always perfect. The pie is always hot, the cheese is always melty and pulls when you grab a slice, always the perfect amount of sauce and the dough is always perfectly cooked. I have tried many pizza's in my life, some have come closer than others but ultimately, none of which lived up to the fabled ninja turtles pizza. I have spent my life searching for the perfect ninja turtles pizza always coming up short, thus it is with great pleasure I present to you:
+Growing up in the early 90's, during the hay day of Teenage Mutant Ninja Turtles, turtle-power was unavoidable. Cartoons, movies, music, theatre... the heroes in a half shell were everywhere, and I loved every second of it. As any TMNT fan knows, if theres anything the ninja turtles were known for it was their love of pizza. I dont know if it was clever marketing, juvenile impressionism or some other mystical force, but the pizza's in the cartoon were magical. Any time the show was on, I wanted pizza; when I thought of pizza, I pictured ninja turtles pizza. This, of course, lead to one problem: All of the pizza I could get in reality could not live up to the ninja turtles pizza. Afterall a cartoon pizza is always perfect, the pie is always hot, the cheese is always melty and pulls when you grab a slice, always the perfect amount of sauce and the dough is always perfectly cooked. I have tried many pizza's, some have come closer than others but ultimately, none of which lived up to the fabled ninja turtles pizza. I have spent my life searching for the perfect ninja turtles pizza always coming up short, thus it is with great pleasure I present to you:
 <br />
+<br />
+
+
 ![Screenshot 2022-09-28 at 11-05-51 https __slicewars-dbad vercel app](https://user-images.githubusercontent.com/82413454/192815358-c3cbbae6-e7bb-42c7-a217-19c8311175ef.png)
+# About
+
+Slicewars is an application aimed at finding the closest pizza to the ninja turtles pizza. Utilizing the browsers geolocation API, a user receives two local pizza shops and can vote on which pizza more closely resembles the ninja turtles pizza and view the results of voting in their area.
+
+## Vote
+
+![Screenshot 2022-09-28 at 11-09-57 https __slicewars-dbad vercel app](https://user-images.githubusercontent.com/82413454/192818798-63c7624b-b165-45d0-8721-6291db0c3637.png)
 
 ![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
 ![slicewars-results-diagram](https://user-images.githubusercontent.com/82413454/192639724-8c04cfcc-6b67-46a6-ad11-6ceda3c2f335.png)
