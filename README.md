@@ -28,7 +28,7 @@ View the voting results for local restaurants!
 <br />
 <br />
 # Inspiration
-[![SC2 Video](https://img.youtube.com/vi/PKy2lYEnhgs/0.jpg)](https://youtu.be/PKy2lYEnhgs)
+[![Video](https://img.youtube.com/vi/PKy2lYEnhgs/0.jpg)](https://youtu.be/PKy2lYEnhgs)<br />
 The idea for this app came to me while researching new technologies, there is a lot of overlap with Roundest and I want to give credit where its due. 
 
 ![slicewars-whiteboard](https://user-images.githubusercontent.com/82413454/192639718-ddf91d67-005e-46eb-bb11-57e5191b9f39.png)
