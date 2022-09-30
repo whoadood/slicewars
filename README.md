@@ -14,9 +14,11 @@ Slicewars is an application aimed at finding the closest pizza to the ninja turt
 
 ## Vote
 ![like-slicewars](https://user-images.githubusercontent.com/82413454/192821763-2546abae-56c4-401b-9e65-bd9dc30a9fc3.png)
+<br />
 Click the thumbs up icon to cast your vote!
 
 ![refresh-slicewars](https://user-images.githubusercontent.com/82413454/192821867-014be9e4-0eee-4f85-a92f-ea1b1a50a5fd.png)
+<br />
 Never tried either restaurant? No worries just refresh the contendors!
 <br />
 ## Results
