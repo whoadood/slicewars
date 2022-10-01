@@ -34,7 +34,7 @@ export default function Tester() {
       <ul className="flex relative gap-8 sm:gap-20 flex-col sm:flex-row">
         {restaurants && (
           <div className="absolute flex flex-col top-1/2 left-1/2 z-10 -translate-x-1/2 sm:-translate-y-3/4 -translate-y-1/2">
-            <span className="gochi bg-gradient-to-b text-transparent bg-clip-text inline border-none outline-4 from-white via-yellow-400 to-red-600 drop-shadow-lg text-2xl">
+            <span className="gochi bg-gradient-to-b text-transparent bg-clip-text from-white via-yellow-400 to-red-600 text-2xl">
               VS
             </span>
           </div>
@@ -89,7 +89,7 @@ export default function Tester() {
                       console.log("vote click", vote);
                       voteAPI.mutate(vote);
                     }}
-                    className="bg-green-800 group-hover:opacity-100 opacity-100 sm:opacity-0 p-3 transition translate-y-8 sm:hover:outline group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"
+                    className="bg-green-800 group-hover:opacity-100 opacity-100 outline-offset-0 sm:opacity-0 outline-4 outline-none p-3 transition sm:translate-y-8 sm:hover:outline-white group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"
                   >
                     <HandThumbUpIcon className="w-6" />
                   </button>
