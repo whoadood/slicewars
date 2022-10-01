@@ -24,7 +24,7 @@ export default function Tester() {
       {restaurants && (
         <div className="flex fixed sm:top-1/2 sm:right-1/2 sm:translate-x-1/2 sm:translate-y-1/2 z-10 top-2 right-2 justify-center items-center">
           <button
-            className="bg-red-800 p-2 rounded-full hover:outline hover:outline-white"
+            className="bg-red-800 p-2 rounded-full sm:hover:outline sm:hover:outline-white"
             onClick={rePickem}
           >
             <ArrowPathIcon className="w-8" />
@@ -89,7 +89,7 @@ export default function Tester() {
                       console.log("vote click", vote);
                       voteAPI.mutate(vote);
                     }}
-                    className="bg-green-800 group-hover:opacity-100 opacity-100 sm:opacity-0 p-3 transition translate-y-8 hover:outline group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"
+                    className="bg-green-800 group-hover:opacity-100 opacity-100 sm:opacity-0 p-3 transition translate-y-8 sm:hover:outline group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"
                   >
                     <HandThumbUpIcon className="w-6" />
                   </button>
