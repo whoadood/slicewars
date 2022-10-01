@@ -6,3 +6,22 @@
 .gochi {
   font-family: "Gochi Hand", cursive;
 }
+.scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #182130;
+  display: none;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  border-left: 3px solid #3f3f3f;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #252747a8;
+  cursor: "all-scroll";
+}
