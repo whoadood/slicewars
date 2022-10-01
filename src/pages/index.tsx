@@ -74,7 +74,7 @@ export default function Tester() {
                   className="min-w-full z-0 h-auto"
                   layout="fill"
                 />
-                <div className="hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
+                <div className="sm:hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
                   <button
                     disabled={voteAPI.isLoading}
                     onClick={() => {
