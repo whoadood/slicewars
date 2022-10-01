@@ -42,7 +42,7 @@ export default function ResultsPage() {
 
   return (
     <div className="flex items-center relative flex-col justify-center  mt-4">
-      <ul className="flex relative gap-4 max-h-[80vh] overflow-y-scroll scrollbar flex-col">
+      <ul className="flex relative gap-4 max-h-[80vh] overflow-y-scroll hover:cursor-all-scroll  scrollbar flex-col">
         {updatedRestaurants &&
           updatedRestaurants?.map((business) => (
             <li

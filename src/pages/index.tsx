@@ -31,10 +31,10 @@ export default function Tester() {
           </button>
         </div>
       )}
-      <ul className="flex relative gap-4 flex-col sm:flex-row">
+      <ul className="flex relative gap-20 flex-col sm:flex-row">
         {restaurants && (
           <div className="absolute flex flex-col top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-3/4 ">
-            <span className="gochi bg-gradient-to-b text-transparent bg-clip-text inline outline-4 from-white via-yellow-400 to-red-600 drop-shadow-lg text-8xl">
+            <span className="gochi bg-gradient-to-b text-transparent bg-clip-text inline border-none outline-4 from-white via-yellow-400 to-red-600 drop-shadow-lg text-2xl">
               VS
             </span>
           </div>
@@ -67,13 +67,12 @@ export default function Tester() {
                 </div>
               </div>
 
-              <div className="h-[300px] max-w-[350px] mt-4 relative flex overflow-hidden">
+              <div className="min-w-[250px] min-h-[200px] mt-4 relative flex overflow-hidden">
                 <Image
                   src={business.image_url}
                   alt={"business image"}
                   className="min-w-full z-0 h-auto"
-                  height={300}
-                  width={350}
+                  layout="fill"
                 />
                 <div className="hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
                   <button
