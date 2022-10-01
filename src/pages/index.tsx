@@ -67,7 +67,7 @@ export default function Tester() {
                 </div>
               </div>
 
-              <div className="min-w-[250px] min-h-[200px] mt-4 relative flex overflow-hidden">
+              <div className="min-h-[200px] max-w-[250px] mt-4 relative flex overflow-hidden">
                 <Image
                   src={business.image_url}
                   alt={"business image"}
