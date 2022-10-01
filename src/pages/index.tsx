@@ -31,9 +31,9 @@ export default function Tester() {
           </button>
         </div>
       )}
-      <ul className="flex relative gap-20 flex-col sm:flex-row">
+      <ul className="flex relative gap-8 sm:gap-20 flex-col sm:flex-row">
         {restaurants && (
-          <div className="absolute flex flex-col top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-3/4 ">
+          <div className="absolute flex flex-col top-1/2 left-1/2 z-10 -translate-x-1/2 sm:-translate-y-3/4 -translate-y-1/2">
             <span className="gochi bg-gradient-to-b text-transparent bg-clip-text inline border-none outline-4 from-white via-yellow-400 to-red-600 drop-shadow-lg text-2xl">
               VS
             </span>
