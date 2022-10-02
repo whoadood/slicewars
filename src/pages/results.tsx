@@ -77,7 +77,7 @@ export default function ResultsPage() {
 
   return (
     <div className="flex items-center relative flex-col justify-center  mt-4">
-      <ul className="flex relative gap-4 max-h-[80vh] overflow-scroll flex-col">
+      <ul className="flex relative gap-4 max-h-[80vh] scrollbar overflow-scroll flex-col">
         {restaurantsWithVotes &&
           restaurantsWithVotes.map((business) => (
             <li
