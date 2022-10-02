@@ -71,6 +71,7 @@ export default function ResultsPage() {
             },
           };
         });
+      // sort by rounded (total votes for / (total votes for + total votes against)) * 100 DESCENDING
       const sortedVotes = updateRestaurants?.sort(
         (a, b) =>
           (Math.round((b.votes.for / (b.votes.for + b.votes.against)) * 100) ||
@@ -79,7 +80,7 @@ export default function ResultsPage() {
             0)
       );
 
-      setRestaurantsWithVotes(updateRestaurants as typeof restaurantsWithVotes);
+      setRestaurantsWithVotes(sortedVotes as typeof restaurantsWithVotes);
     }
   }, [allVotes.data?.formatVotes, restaurantContext?.restaurantList]);
 
