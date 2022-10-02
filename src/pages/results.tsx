@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { trpc } from "../utils/trpc";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRestaurantListContext } from "../hooks/restaurantListContext";
@@ -6,6 +6,42 @@ import Image from "next/image";
 
 export default function ResultsPage() {
   const restaurantContext = useRestaurantListContext();
+  const [restaurantsWithVotes, setRestaurantsWithVotes] = useState<
+    {
+      rating: number;
+      price: string;
+      phone: string;
+      id: string;
+      alias: string;
+      is_closed: boolean;
+      categories: [
+        {
+          alias: string;
+          title: string;
+        }
+      ];
+      review_count: number;
+      name: string;
+      url: string;
+      coordinates: {
+        latitude: number;
+        longitude: number;
+      };
+      image_url: string;
+      location: {
+        city: string;
+        country: string;
+        address2: string;
+        address3: string;
+        state: string;
+        address1: string;
+        zip_code: string;
+      };
+      distance: number;
+      transactions: string[];
+      votes: { for: number; against: number };
+    }[]
+  >([]);
   const allVotes = trpc.useQuery(
     [
       "vote.getAllVotes",
@@ -19,32 +55,41 @@ export default function ResultsPage() {
       enabled: !!restaurantContext?.restaurantList,
     }
   );
-  const updatedRestaurants = restaurantContext?.restaurantList?.businesses
-    .map((business) => {
-      return {
-        ...business,
-        votes: {
-          for: allVotes.data?.formatVotes[business.id]
-            ? allVotes.data?.formatVotes[business.id]?.votedFor
-            : 0,
-          against: allVotes.data?.formatVotes[business.id]
-            ? allVotes.data?.formatVotes[business.id]?.votedAgainst
-            : 0,
-        },
-      };
-    })
-    .sort(
-      (a, b) =>
-        (Math.round((b.votes.for / (b.votes.for + b.votes.against)) * 100) ||
-          0) -
-        (Math.round((a.votes.for / (a.votes.for + a.votes.against)) * 100) || 0)
-    );
+
+  useEffect(() => {
+    if (allVotes.data?.formatVotes) {
+      // map over restaurants and attach vote object
+      /* {votes: { for: number, against: number }} */
+      const updateRestaurants =
+        restaurantContext?.restaurantList.businesses.map((business) => {
+          return {
+            ...business,
+            votes: {
+              for: allVotes.data?.formatVotes[business.id]?.votedFor || 0,
+              against:
+                allVotes.data?.formatVotes[business.id]?.votedAgainst || 0,
+            },
+          };
+        });
+      const sortedVotes = updateRestaurants?.sort(
+        (a, b) =>
+          (Math.round((b.votes.for / (b.votes.for + b.votes.against)) * 100) ||
+            0) -
+          (Math.round((a.votes.for / (a.votes.for + a.votes.against)) * 100) ||
+            0)
+      );
+
+      setRestaurantsWithVotes(updateRestaurants as typeof restaurantsWithVotes);
+    }
+  }, [allVotes.data?.formatVotes, restaurantContext?.restaurantList]);
+
+  console.log("restaurants with votes", restaurantsWithVotes);
 
   return (
     <div className="flex items-center relative flex-col justify-center  mt-4">
-      <ul className="flex relative gap-4 max-h-[80vh] overflow-y-scroll hover:cursor-all-scroll  scrollbar flex-col">
-        {updatedRestaurants &&
-          updatedRestaurants?.map((business) => (
+      <ul className="flex relative gap-4 max-h-[80vh] overflow-scroll flex-col">
+        {restaurantsWithVotes &&
+          restaurantsWithVotes.map((business) => (
             <li
               className="bg-slate-900  relative rounded p-2 flex"
               key={business.id}

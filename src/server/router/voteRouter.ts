@@ -68,21 +68,30 @@ export const voteRouter = createRouter()
         throw new TRPCError({ code: "NOT_FOUND" });
       }
 
-      const formatVotes = (allVotes as Vote[]).reduce((acc: any, cur) => {
-        if (!acc[cur.votedFor] || !acc[cur.votedAgainst]) {
+      // count votes for restaurantId and return an object
+      /* {
+        [restaurant_id]: {
+          votedFor: number,
+          votedAgainst: number
+        },
+      } */
+      // need to look into this ts, seems sus.
+      const formatVotes = (allVotes as Vote[]).reduce((acc, cur) => {
+        if (!acc[cur.votedFor]) {
           acc[cur.votedFor] = { votedFor: 1, votedAgainst: 0 };
+        }
+        if (!acc[cur.votedAgainst]) {
           acc[cur.votedAgainst] = { votedFor: 0, votedAgainst: 1 };
-        } else {
-          if (acc[cur.votedFor]) {
-            acc[cur.votedFor].votedFor += 1;
-          }
-          if (acc[cur.votedAgainst]) {
-            acc[cur.votedAgainst].votedAgainst += 1;
-          }
+        }
+        if (acc[cur.votedFor]) {
+          acc[cur.votedFor].votedFor += 1;
+        }
+        if (acc[cur.votedAgainst]) {
+          acc[cur.votedAgainst].votedAgainst += 1;
         }
 
         return acc;
-      }, {});
+      }, {} as Record<string, { votedFor: number; votedAgainst: number }>);
 
       console.log("vote format", formatVotes);
 
