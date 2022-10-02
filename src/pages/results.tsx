@@ -60,7 +60,7 @@ export default function ResultsPage() {
   useEffect(() => {
     if (allVotes.data?.countedVotes) {
       // map over restaurants and attach vote object
-      /* {votes: { for: number, against: number }} */
+      /* {votes: VOTE_PREFERENCE_PERCENTAGE */
       const updateRestaurants =
         restaurantContext?.restaurantList.businesses.map((business) => {
           return {
@@ -68,7 +68,7 @@ export default function ResultsPage() {
             vote: allVotes.data?.countedVotes[business.id] || 0,
           };
         });
-      // sort by rounded (total votes for / (total votes for + total votes against)) * 100 DESCENDING
+      // sort by vote DESCENDING
       const sortedVotes = updateRestaurants?.sort((a, b) => b.vote - a.vote);
 
       setRestaurantsWithVotes(sortedVotes as typeof restaurantsWithVotes);
