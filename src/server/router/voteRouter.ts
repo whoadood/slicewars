@@ -76,7 +76,7 @@ export const voteRouter = createRouter()
         },
       } */
       // need to look into this ts, seems sus.
-      const formatVotes = (allVotes as Vote[]).reduce((acc, cur) => {
+      const formatVotes = allVotes.reduce((acc, cur) => {
         if (!acc[cur.votedFor]) {
           acc[cur.votedFor] = { votedFor: 1, votedAgainst: 0 };
         }
@@ -84,9 +84,11 @@ export const voteRouter = createRouter()
           acc[cur.votedAgainst] = { votedFor: 0, votedAgainst: 1 };
         }
         if (acc[cur.votedFor]) {
+          //@ts-ignore
           acc[cur.votedFor].votedFor += 1;
         }
         if (acc[cur.votedAgainst]) {
+          //@ts-ignore
           acc[cur.votedAgainst].votedAgainst += 1;
         }
 
