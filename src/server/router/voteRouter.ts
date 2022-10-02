@@ -93,8 +93,6 @@ export const voteRouter = createRouter()
         return acc;
       }, {} as Record<string, { votedFor: number; votedAgainst: number }>);
 
-      console.log("vote format", formatVotes);
-
       return {
         message: "successfully found votes",
         formatVotes: formatVotes,

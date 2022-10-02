@@ -86,7 +86,6 @@ export default function Tester() {
                           )[0] as YelpResponse["businesses"][number]
                         ).id,
                       };
-                      console.log("vote click", vote);
                       voteAPI.mutate(vote);
                     }}
                     className="bg-green-800 group-hover:opacity-100 opacity-100 outline-offset-0 sm:opacity-0 outline-4 outline-none p-3 transition sm:translate-y-8 sm:hover:outline-white group-hover:translate-y-1 duration-300 ease-in-out rounded-full flex items-center justify-center"

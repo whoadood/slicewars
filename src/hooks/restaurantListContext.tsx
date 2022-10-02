@@ -31,8 +31,6 @@ export default function RestaurantProvider({
     }
   );
 
-  console.log("restaurant context", restaurantList);
-
   return (
     <restaurantListContext.Provider
       value={{ restaurantList: restaurantList as YelpResponse, restIsLoading }}

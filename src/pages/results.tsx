@@ -84,8 +84,6 @@ export default function ResultsPage() {
     }
   }, [allVotes.data?.formatVotes, restaurantContext?.restaurantList]);
 
-  console.log("restaurants with votes", restaurantsWithVotes);
-
   return (
     <div className="flex items-center relative flex-col justify-center  mt-4">
       <ul className="flex relative gap-4 max-h-[80vh] overflow-scroll flex-col">
