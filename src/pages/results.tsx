@@ -7,40 +7,41 @@ import Image from "next/image";
 export default function ResultsPage() {
   const restaurantContext = useRestaurantListContext();
   const [restaurantsWithVotes, setRestaurantsWithVotes] = useState<
-    {
-      rating: number;
-      price: string;
-      phone: string;
-      id: string;
-      alias: string;
-      is_closed: boolean;
-      categories: [
-        {
-          alias: string;
-          title: string;
-        }
-      ];
-      review_count: number;
-      name: string;
-      url: string;
-      coordinates: {
-        latitude: number;
-        longitude: number;
-      };
-      image_url: string;
-      location: {
-        city: string;
-        country: string;
-        address2: string;
-        address3: string;
-        state: string;
-        address1: string;
-        zip_code: string;
-      };
-      distance: number;
-      transactions: string[];
-      votes: { for: number; against: number };
-    }[]
+    | {
+        rating: number;
+        price: string;
+        phone: string;
+        id: string;
+        alias: string;
+        is_closed: boolean;
+        categories: [
+          {
+            alias: string;
+            title: string;
+          }
+        ];
+        review_count: number;
+        name: string;
+        url: string;
+        coordinates: {
+          latitude: number;
+          longitude: number;
+        };
+        image_url: string;
+        location: {
+          city: string;
+          country: string;
+          address2: string;
+          address3: string;
+          state: string;
+          address1: string;
+          zip_code: string;
+        };
+        distance: number;
+        transactions: string[];
+        vote: number;
+      }[]
+    | undefined
   >([]);
   const allVotes = trpc.useQuery(
     [
@@ -57,32 +58,22 @@ export default function ResultsPage() {
   );
 
   useEffect(() => {
-    if (allVotes.data?.formatVotes) {
+    if (allVotes.data?.countedVotes) {
       // map over restaurants and attach vote object
       /* {votes: { for: number, against: number }} */
       const updateRestaurants =
         restaurantContext?.restaurantList.businesses.map((business) => {
           return {
             ...business,
-            votes: {
-              for: allVotes.data?.formatVotes[business.id]?.votedFor || 0,
-              against:
-                allVotes.data?.formatVotes[business.id]?.votedAgainst || 0,
-            },
+            vote: allVotes.data?.countedVotes[business.id] || 0,
           };
         });
       // sort by rounded (total votes for / (total votes for + total votes against)) * 100 DESCENDING
-      const sortedVotes = updateRestaurants?.sort(
-        (a, b) =>
-          (Math.round((b.votes.for / (b.votes.for + b.votes.against)) * 100) ||
-            0) -
-          (Math.round((a.votes.for / (a.votes.for + a.votes.against)) * 100) ||
-            0)
-      );
+      const sortedVotes = updateRestaurants?.sort((a, b) => b.vote - a.vote);
 
       setRestaurantsWithVotes(sortedVotes as typeof restaurantsWithVotes);
     }
-  }, [allVotes.data?.formatVotes, restaurantContext?.restaurantList]);
+  }, [allVotes.data?.countedVotes, restaurantContext?.restaurantList]);
 
   return (
     <div className="flex items-center relative flex-col justify-center  mt-4">
@@ -123,14 +114,7 @@ export default function ResultsPage() {
                   </p>
                 </div>
                 <div className="absolute text-4xl bottom-2 right-2 bg-gradient-to-b text-transparent bg-clip-text outline-4 from-white via-yellow-400 to-red-600 drop-shadow-lg">
-                  {business.votes.for + business.votes.against !== 0
-                    ? Math.round(
-                        (business.votes.for /
-                          (business.votes.for + business.votes.against)) *
-                          100
-                      )
-                    : 0}
-                  %
+                  {business.vote}%
                 </div>
               </div>
             </li>

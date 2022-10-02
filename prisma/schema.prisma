@@ -11,7 +11,15 @@ datasource db {
 }
 
 model Vote {
-    id           String @id @default(cuid())
-    votedFor     String
-    votedAgainst String
+    id            String     @id @default(cuid())
+    voteFor       String
+    voteForId     Restaurant @relation(name: "voteFor", fields: [voteFor], references: [id])
+    voteAgainst   String
+    voteAgainstId Restaurant @relation(name: "voteAgainst", fields: [voteAgainst], references: [id])
+}
+
+model Restaurant {
+    id           String @id @unique
+    votesFor     Vote[] @relation(name: "voteFor")
+    votesAgainst Vote[] @relation(name: "voteAgainst")
 }

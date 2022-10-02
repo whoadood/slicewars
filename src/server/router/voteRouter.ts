@@ -37,8 +37,30 @@ export const voteRouter = createRouter()
       console.log("serverside input", input);
       const newVote = await ctx.prisma.vote.create({
         data: {
-          votedFor: input.votedFor,
-          votedAgainst: input.votedAgainst,
+          voteForId: {
+            connectOrCreate: {
+              create: {
+                id: input.votedFor,
+              },
+              where: {
+                id: input.votedFor,
+              },
+            },
+          },
+          voteAgainstId: {
+            connectOrCreate: {
+              create: {
+                id: input.votedAgainst,
+              },
+              where: {
+                id: input.votedAgainst,
+              },
+            },
+          },
+        },
+        include: {
+          voteForId: true,
+          voteAgainstId: true,
         },
       });
       if (!newVote) {
@@ -53,51 +75,33 @@ export const voteRouter = createRouter()
       restaurants: z.array(z.string()),
     }),
     async resolve({ input, ctx }) {
-      const allVotes: Vote[] = await ctx.prisma.vote.findMany({
+      const votes = await ctx.prisma.restaurant.findMany({
         where: {
-          votedFor: {
+          id: {
             in: input.restaurants,
           },
-          votedAgainst: {
-            in: input.restaurants,
+        },
+        include: {
+          _count: {
+            select: {
+              votesFor: true,
+              votesAgainst: true,
+            },
           },
         },
       });
-
-      if (!allVotes) {
-        throw new TRPCError({ code: "NOT_FOUND" });
-      }
-
-      // count votes for restaurantId and return an object
-      /* {
-        [restaurant_id]: {
-          votedFor: number,
-          votedAgainst: number
-        },
-      } */
-      // need to look into this ts, seems sus.
-      const formatVotes = (allVotes as Vote[]).reduce((acc, cur) => {
-        if (!acc[cur.votedFor]) {
-          acc[cur.votedFor] = { votedFor: 1, votedAgainst: 0 };
-        }
-        if (!acc[cur.votedAgainst]) {
-          acc[cur.votedAgainst] = { votedFor: 0, votedAgainst: 1 };
-        }
-        if (acc[cur.votedFor]) {
-          acc[cur.votedFor].votedFor += 1;
-        }
-        if (acc[cur.votedAgainst]) {
-          acc[cur.votedAgainst].votedAgainst += 1;
-        }
-
+      const countedVotes = votes.reduce((acc: Record<string, number>, cur) => {
+        acc[cur.id] = Math.round(
+          (cur._count.votesFor /
+            (cur._count.votesFor + cur._count.votesAgainst)) *
+            100
+        );
         return acc;
-      }, {} as Record<string, { votedFor: number; votedAgainst: number }>);
-
-      // console.log("vote format", formatVotes);
+      }, {});
 
       return {
         message: "successfully found votes",
-        formatVotes: formatVotes,
+        countedVotes,
       };
     },
   });
