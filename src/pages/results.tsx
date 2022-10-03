@@ -90,7 +90,6 @@ export default function ResultsPage() {
                   alt={"business image"}
                   height={100}
                   width={125}
-                  className="min-w-full h-auto"
                 />
               </div>
               <div>
