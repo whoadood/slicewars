@@ -11,13 +11,10 @@ export default function LocationProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [location, setLocation] = useState<
-    | {
-        latitude: number;
-        longitude: number;
-      }
-    | undefined
-  >();
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  }>();
 
   useEffect(() => {
     if ("geolocation" in navigator) {
