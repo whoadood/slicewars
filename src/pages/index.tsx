@@ -35,6 +35,7 @@ export default function Tester() {
         {restaurants && (
           <div className="flex fixed sm:top-1/2 sm:right-1/2 sm:translate-x-1/2 sm:translate-y-1/2 z-10 top-2 right-2 justify-center items-center">
             <button
+              aria-label="get new restaurants"
               className="bg-red-800 p-2 rounded-full sm:hover:outline sm:hover:outline-white"
               onClick={rePickem}
             >
@@ -87,6 +88,7 @@ export default function Tester() {
                   />
                   <div className="sm:hover:bg-black/50 group transition duration-100 ease-in-out absolute h-full w-full flex items-center justify-center">
                     <button
+                      aria-label={`vote for ${business.name}`}
                       disabled={voteAPI.isLoading}
                       onClick={() => {
                         const vote = {
